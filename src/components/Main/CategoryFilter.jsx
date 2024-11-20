@@ -7,7 +7,7 @@ const RESTAURANT_FILTER_CONTAINER = styled.section`
     padding: 0 16px;
     margin-top: 24px;
     
-    &select {
+    & select {
         height: 44px;
         min-width: 125px;
         border: 1px solid #d0d5dd;

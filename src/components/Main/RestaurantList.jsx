@@ -1,10 +1,17 @@
-import styles from '../../css/RestaurantList.module.css';
 import RestaurantItem from './RestaurantItem.jsx';
+import styled from "styled-components";
+
+const RESTAURANT_LIST_CONTAINER = styled.section`
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    margin: 16px 0;
+`;
 
 function RestaurantList( { restaurants, onChangeDetailModal } ) {
     return (
-        <section className={styles['restaurant-list-container']}>
-            <ul className={styles['restaurant-list']}>
+        <RESTAURANT_LIST_CONTAINER>
+            <ul>
                 {restaurants.map((restaurant) => (
                     <RestaurantItem 
                         key={restaurant.id}
@@ -15,8 +22,8 @@ function RestaurantList( { restaurants, onChangeDetailModal } ) {
                         onClick={() => onChangeDetailModal(restaurant.name, restaurant.description)}
                     />
                 ))}
-            </ul>   
-        </section>
+            </ul>
+        </RESTAURANT_LIST_CONTAINER>
     );
 }
 

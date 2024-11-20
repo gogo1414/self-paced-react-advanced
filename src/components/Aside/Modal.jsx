@@ -20,11 +20,13 @@ const MODAL_CONTAINER = styled.div`
     padding: 32px 16px;
     border-radius: 8px 8px 0px 0px;
     background: var(--grey-100);
-    
-    &h2 {
-        margin-bottom: 36px;
-        font-size: 28px;
-    }
+`;
+
+const MODAL_TITLE = styled.h2`
+    margin-bottom: 36px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
 `;
 
 function Modal({ children, title, onClose }) {
@@ -32,7 +34,7 @@ function Modal({ children, title, onClose }) {
         <MODAL_WRAPPER>
             <MODAL_BACKDROP onClick={onClose}></MODAL_BACKDROP>
             <MODAL_CONTAINER>
-                <h2>{title}</h2>
+                <MODAL_TITLE>{title}</MODAL_TITLE>
                 {children}
             </MODAL_CONTAINER>
         </MODAL_WRAPPER>

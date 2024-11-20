@@ -11,7 +11,9 @@ const GNB = styled.header`
 
 const GNB_TITLE = styled.h1`
     color: #fcfcfd;
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
 `;
 
 const GNB_BUTTON = styled.button`
