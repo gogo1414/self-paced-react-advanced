@@ -1,4 +1,3 @@
-import styles from '../../css/RestaurantList.module.css';
 import styled from "styled-components";
 
 const RESTAURANT_WRAPPER = styled.li`
