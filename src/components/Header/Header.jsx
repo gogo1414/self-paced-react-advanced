@@ -1,4 +1,3 @@
-import styles from "../../css/Header.module.css";
 import styled from "styled-components";
 
 const GNB = styled.header`
