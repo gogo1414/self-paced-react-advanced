@@ -41,6 +41,12 @@
       "name": "test",
       "description": "test",
       "category": "중식"
+    },
+    {
+      "id": "39f4feb0-204d-42ea-b0e7-f4b3d1ad1228",
+      "name": "test",
+      "description": "test",
+      "category": "일식"
     }
   ]
 }
