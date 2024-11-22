@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const MODAL_WRAPPER = styled.div`
+const ModalWrapper = styled.div`
     display: block;
 `;
 
-const MODAL_BACKDROP = styled.div`
+const ModalBackdrop = styled.div`
     position: fixed;
     top: 0;
     right: 0;
@@ -13,7 +13,7 @@ const MODAL_BACKDROP = styled.div`
     background: rgba(0, 0, 0, 0.35);
 `;
 
-const MODAL_CONTAINER = styled.div`
+const ModalContainer = styled.div`
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -22,7 +22,7 @@ const MODAL_CONTAINER = styled.div`
     background: var(--grey-100);
 `;
 
-const MODAL_TITLE = styled.h2`
+const ModalTitle = styled.h2`
     margin-bottom: 36px;
     font-size: 20px;
     line-height: 24px;
@@ -31,13 +31,13 @@ const MODAL_TITLE = styled.h2`
 
 function Modal({ children, title, onClose }) {
     return (
-        <MODAL_WRAPPER>
-            <MODAL_BACKDROP onClick={onClose}></MODAL_BACKDROP>
-            <MODAL_CONTAINER>
-                <MODAL_TITLE>{title}</MODAL_TITLE>
+        <ModalWrapper>
+            <ModalBackdrop onClick={onClose}></ModalBackdrop>
+            <ModalContainer>
+                <ModalTitle>{title}</ModalTitle>
                 {children}
-            </MODAL_CONTAINER>
-        </MODAL_WRAPPER>
+            </ModalContainer>
+        </ModalWrapper>
     );
 }
 

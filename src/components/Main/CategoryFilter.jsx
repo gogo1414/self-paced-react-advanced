@@ -1,7 +1,7 @@
 import Categories from "../../data/Category.js";
 import styled from "styled-components";
 
-const RESTAURANT_FILTER_CONTAINER = styled.section`
+const RestaurantFilterContainer = styled.section`
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
@@ -22,7 +22,7 @@ function CategoryFilter({ category, onChangeCategory }) {
     const categories = Categories();
 
     return (
-        <RESTAURANT_FILTER_CONTAINER>
+        <RestaurantFilterContainer>
             <select 
                 name="category" 
                 id="category-filter"
@@ -34,7 +34,7 @@ function CategoryFilter({ category, onChangeCategory }) {
                     <option key = {category.id} value={category.name}>{category.name}</option>
                 ))}
             </select>
-        </RESTAURANT_FILTER_CONTAINER>
+        </RestaurantFilterContainer>
     );
 }
 

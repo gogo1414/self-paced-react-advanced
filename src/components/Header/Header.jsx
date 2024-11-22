@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const GNB = styled.header`
+const Gnb = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,14 +9,14 @@ const GNB = styled.header`
     background-color: var(--primary-color);
 `;
 
-const GNB_TITLE = styled.h1`
+const GnbTitle = styled.h1`
     color: #fcfcfd;
     font-size: 20px;
     line-height: 24px;
     font-weight: 600;
 `;
 
-const GNB_BUTTON = styled.button`
+const GnbButton = styled.button`
     height: 40px;
     border: none;
     border-radius: 8px;
@@ -34,12 +34,12 @@ const GNB_BUTTON = styled.button`
 
 function Header({ onChangeAddModal }) {
     return (
-        <GNB>
-            <GNB_TITLE>점심 뭐 먹지</GNB_TITLE>
-            <GNB_BUTTON type="button" aria-label="음식점 추가" onClick={onChangeAddModal}>
+        <Gnb>
+            <GnbTitle>점심 뭐 먹지</GnbTitle>
+            <GnbButton type="button" aria-label="음식점 추가" onClick={onChangeAddModal}>
                 <img src="../templates/add-button.png" alt="음식점 추가"></img>
-            </GNB_BUTTON>
-        </GNB>
+            </GnbButton>
+        </Gnb>
     );
 }
 

@@ -1,23 +1,23 @@
 import Modal from "./Modal.jsx"
 import styled from "styled-components";
 
-const RESTAURANT_INFO = styled.div`
+const RestaurantInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 `;
 
-const RESTAURANT_INFO_DESCRIPTION = styled.p`
+const RestaurantInfoDescription = styled.p`
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
 `;
 
-const BUTTON_CONTAINER = styled.div`
+const ButtonContainer = styled.div`
     display: flex;
 `;
 
-const BUTTON = styled.button`
+const Button = styled.button`
     // button
     width: 100%;
     height: 44px;
@@ -35,12 +35,12 @@ const BUTTON = styled.button`
 function RestaurantDetailModal({ restaurant, onChangeDetailModal }) {
     return (
         <Modal title={restaurant.name} onClose={onChangeDetailModal}>
-            <RESTAURANT_INFO>
-                <RESTAURANT_INFO_DESCRIPTION>{restaurant.description}</RESTAURANT_INFO_DESCRIPTION>
-            </RESTAURANT_INFO>
-            <BUTTON_CONTAINER onClick={onChangeDetailModal}>
-                <BUTTON>닫기</BUTTON>
-            </BUTTON_CONTAINER>
+            <RestaurantInfo>
+                <RestaurantInfoDescription>{restaurant.description}</RestaurantInfoDescription>
+            </RestaurantInfo>
+            <ButtonContainer onClick={onChangeDetailModal}>
+                <Button>닫기</Button>
+            </ButtonContainer>
         </Modal>
     );
 }

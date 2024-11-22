@@ -1,7 +1,7 @@
 import RestaurantItem from './RestaurantItem.jsx';
 import styled from "styled-components";
 
-const RESTAURANT_LIST_CONTAINER = styled.section`
+const RestaurantListContainer = styled.section`
     display: flex;
     flex-direction: column;
     padding: 0 16px;
@@ -10,7 +10,7 @@ const RESTAURANT_LIST_CONTAINER = styled.section`
 
 function RestaurantList( { restaurants, onChangeDetailModal } ) {
     return (
-        <RESTAURANT_LIST_CONTAINER>
+        <RestaurantListContainer>
             <ul>
                 {restaurants.map((restaurant) => (
                     <RestaurantItem 
@@ -23,7 +23,7 @@ function RestaurantList( { restaurants, onChangeDetailModal } ) {
                     />
                 ))}
             </ul>
-        </RESTAURANT_LIST_CONTAINER>
+        </RestaurantListContainer>
     );
 }
 

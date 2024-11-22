@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-const RESTAURANT_WRAPPER = styled.li`
+const RestaurantWrapper = styled.li`
     display: flex;
     align-items: flex-start;
     padding: 16px 8px;
     border-bottom: 1px solid #e9eaed;
 `;
 
-const RESTAURANT_CATEGORY = styled.div`
+const RestaurantCategory = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,25 +20,25 @@ const RESTAURANT_CATEGORY = styled.div`
     background: var(--lighten-color);
 `;
 
-const CATEGORY_ICON = styled.img`
+const CategoryIcon = styled.img`
     width: 36px;
     height: 36px;
 `;
 
-const RESTAURANT_INFO = styled.div`
+const RestaurantInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 `;
 
-const RESTAURANT_NAME = styled.h3`
+const RestaurantName = styled.h3`
     margin: 0;
     font-size: 18px;
     line-height: 28px;
     font-weight: 600;
 `;
 
-const RESTAURANT_DESCRIPTION = styled.p`
+const RestaurantDescription = styled.p`
     display: -webkit-box;
     padding-top: 8px;
     overflow: hidden;
@@ -53,15 +53,15 @@ const RESTAURANT_DESCRIPTION = styled.p`
 
 function RestaurantItem({ name, description, category, alt, onClick }) {
     return (
-        <RESTAURANT_WRAPPER onClick={onClick}>
-          <RESTAURANT_CATEGORY>
-            <CATEGORY_ICON src={convertCategoryToImageSrc(category)} alt={alt}></CATEGORY_ICON>
-          </RESTAURANT_CATEGORY>
-          <RESTAURANT_INFO>
-            <RESTAURANT_NAME>{name}</RESTAURANT_NAME>
-            <RESTAURANT_DESCRIPTION>{description}</RESTAURANT_DESCRIPTION>
-          </RESTAURANT_INFO>
-        </RESTAURANT_WRAPPER>
+        <RestaurantWrapper onClick={onClick}>
+          <RestaurantCategory>
+            <CategoryIcon src={convertCategoryToImageSrc(category)} alt={alt}></CategoryIcon>
+          </RestaurantCategory>
+          <RestaurantInfo>
+            <RestaurantName>{name}</RestaurantName>
+            <RestaurantDescription>{description}</RestaurantDescription>
+          </RestaurantInfo>
+        </RestaurantWrapper>
     );
 }
 
