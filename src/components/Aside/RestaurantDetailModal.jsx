@@ -30,12 +30,6 @@ const BUTTON = styled.button`
     // button--primary
     background: var(--primary-color);
     color: var(--grey-100);
-
-
-    // text-caption
-    font-size: 14px;
-    line-height: 20px;
-    //font-weight: 400;
 `;
 
 function RestaurantDetailModal({ restaurant, onChangeDetailModal }) {
