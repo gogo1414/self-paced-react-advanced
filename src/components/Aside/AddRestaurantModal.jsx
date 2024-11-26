@@ -11,15 +11,15 @@ const FormItem = styled.div`
         color: var(--grey-400);
         font-size: 14px;
 
-        ${(props) =>
-                props.isRequired &&
+        ${(props) => props.isRequired &&
                 `
-      &::after {
-        padding-left: 4px;
-        color: var(--primary-color);
-        content: "*";
-      }
-    `}
+                &::after {
+                    padding-left: 4px;
+                    color: var(--primary-color);
+                    content: "*";
+                }
+                `
+        }
     }
 `;
 
