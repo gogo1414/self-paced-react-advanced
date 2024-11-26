@@ -37,11 +37,18 @@ function RestaurantDetailModal() {
     const { clickedRestaurantItem, toggleModal } = useRestaurantContext();
 
     return (
-        <Modal title={clickedRestaurantItem.name} onClose={toggleModal("detail", false)}>
+        <Modal
+            title={clickedRestaurantItem.name}
+            onClose={() => toggleModal("detail", false)}
+        >
             <RestaurantInfo>
-                <RestaurantInfoDescription>{clickedRestaurantItem.description}</RestaurantInfoDescription>
+                <RestaurantInfoDescription>
+                    {clickedRestaurantItem.description}
+                </RestaurantInfoDescription>
             </RestaurantInfo>
-            <ButtonContainer onClick={toggleModal("detail", false)}>
+            <ButtonContainer
+                onClick={() => toggleModal("detail", false)}
+            >
                 <Button>닫기</Button>
             </ButtonContainer>
         </Modal>

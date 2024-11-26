@@ -1,6 +1,7 @@
 import Categories from "../../data/Category.js";
 import Modal from "./Modal.jsx"
 import styled from "styled-components";
+import { useRestaurantContext } from "../../contexts/RestaurantContext.jsx";
 
 const FormItem = styled.div`
     display: flex;
@@ -79,7 +80,7 @@ const Button = styled.button`
     //font-weight: 400;
 `;
 
-function AddRestaurantModal({ onFormSubmit, onChangeAddModal }) {
+function AddRestaurantModal() {
     const categories = Categories().filter(
         (category) => category.name !== "전체"
     );
@@ -87,13 +88,15 @@ function AddRestaurantModal({ onFormSubmit, onChangeAddModal }) {
     const handleSubmit = (event) => {
         const formData = new FormData(event.target);
         const formJson = Object.fromEntries(formData.entries());
-        onFormSubmit(formJson);
+        toggleModal("add", false, null, formJson)
     }
+
+    const { toggleModal } = useRestaurantContext();
 
     return (
         <Modal 
             title="새로운 음식점" 
-            onClose={onChangeAddModal}
+            onClose={() => toggleModal("add", false)}
         >
             <form method="post" onSubmit={handleSubmit}>
                 <FormItem isRequired={true}>

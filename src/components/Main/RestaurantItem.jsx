@@ -55,7 +55,10 @@ function RestaurantItem({ name, description, category, alt, onClick }) {
     return (
         <RestaurantWrapper onClick={onClick}>
           <RestaurantCategory>
-            <CategoryIcon src={convertCategoryToImageSrc(category)} alt={alt}></CategoryIcon>
+            <CategoryIcon
+                src={convertCategoryToImageSrc(category)}
+                alt={alt}>
+            </CategoryIcon>
           </RestaurantCategory>
           <RestaurantInfo>
             <RestaurantName>{name}</RestaurantName>
