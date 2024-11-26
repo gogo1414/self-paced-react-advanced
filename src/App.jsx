@@ -11,16 +11,11 @@ import {RestaurantProvider} from "./contexts/RestaurantContext.jsx";
 
 function App() {
   const { restaurants, addRestaurant } = useRestaurants();
-  const [ category, setCategory ] = useState("전체");
   const [ clickedRestaurantItem, setClickedRestaurantItem ] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState({
     detail: false,
     add: false,
   });
-
-  const filteredRestaurants = category === "전체" ? restaurants : restaurants.filter(
-    (restaurant) => restaurant.category === category
-  );
 
   const toggleModal = (modalType, isOpen, detailData = null, event = null) => {
     setIsModalOpen((prev) => ({ ...prev, [modalType]: isOpen }));
@@ -39,16 +34,10 @@ function App() {
 
   return (
     <RestaurantProvider>
-      <Header 
-        onChangeAddModal={() => toggleModal("add", true)}
-      />
+      <Header />
       <main>
         <CategoryFilter />
-        <RestaurantList
-          onChangeDetailModal=
-              {(name, description) => toggleModal("detail", true, { name, description })
-          }
-        />
+        <RestaurantList />
       </main>
       <aside>
         {isModalOpen.detail && 

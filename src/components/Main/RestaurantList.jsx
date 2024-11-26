@@ -9,8 +9,8 @@ const RestaurantListContainer = styled.section`
     margin: 16px 0;
 `;
 
-function RestaurantList( { onChangeDetailModal } ) {
-    const { filteredRestaurants } = useRestaurantContext();
+function RestaurantList() {
+    const { filteredRestaurants, toggleModal } = useRestaurantContext();
 
     return (
         <RestaurantListContainer>
@@ -22,7 +22,7 @@ function RestaurantList( { onChangeDetailModal } ) {
                         description={restaurant.description}
                         category={restaurant.category}
                         alt={restaurant.alt}
-                        onClick={() => onChangeDetailModal(restaurant.name, restaurant.description)}
+                        onClick={(name, description) => toggleModal("detail", true, { name, description })}
                     />
                 ))}
             </ul>
