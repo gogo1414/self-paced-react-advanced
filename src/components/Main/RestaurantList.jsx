@@ -1,5 +1,6 @@
 import RestaurantItem from './RestaurantItem.jsx';
 import styled from "styled-components";
+import { useRestaurantContext } from "../../contexts/RestaurantContext.jsx";
 
 const RestaurantListContainer = styled.section`
     display: flex;
@@ -8,11 +9,13 @@ const RestaurantListContainer = styled.section`
     margin: 16px 0;
 `;
 
-function RestaurantList( { restaurants, onChangeDetailModal } ) {
+function RestaurantList( { onChangeDetailModal } ) {
+    const { filteredRestaurants } = useRestaurantContext();
+
     return (
         <RestaurantListContainer>
             <ul>
-                {restaurants.map((restaurant) => (
+                {filteredRestaurants.map((restaurant) => (
                     <RestaurantItem 
                         key={restaurant.id}
                         name={restaurant.name}

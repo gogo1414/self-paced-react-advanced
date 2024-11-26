@@ -7,6 +7,7 @@ import RestaurantList from "./components/Main/RestaurantList.jsx"
 import { useState } from "react";
 import { useRestaurants } from "./hooks/useRestaurants.js";
 import { v4 as uuidv4 } from 'uuid';
+import {RestaurantProvider} from "./contexts/RestaurantContext.jsx";
 
 function App() {
   const { restaurants, addRestaurant } = useRestaurants();
@@ -37,14 +38,13 @@ function App() {
   };
 
   return (
-    <>
+    <RestaurantProvider>
       <Header 
         onChangeAddModal={() => toggleModal("add", true)}
       />
       <main>
-        <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList 
-          restaurants={filteredRestaurants} 
+        <CategoryFilter />
+        <RestaurantList
           onChangeDetailModal=
               {(name, description) => toggleModal("detail", true, { name, description })
           }
@@ -52,7 +52,7 @@ function App() {
       </main>
       <aside>
         {isModalOpen.detail && 
-          <RestaurantDetailModal 
+          <RestaurantDetailModal
             restaurant={clickedRestaurantItem} 
             onChangeDetailModal={() => toggleModal("detail", false)}
           />
@@ -64,7 +64,7 @@ function App() {
           />
         }
       </aside>
-    </>
+    </RestaurantProvider>
   );
 }
 
