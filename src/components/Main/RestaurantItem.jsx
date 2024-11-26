@@ -66,18 +66,22 @@ function RestaurantItem({ name, description, category, alt, onClick }) {
 }
 
 function convertCategoryToImageSrc(category) {
-    if (category === "아시안")
-        return "../../templates/category-asian.png";
-    else if (category === "중식")
-        return "../../templates/category-chinese.png";
-    else if (category === "기타")
-        return "../../templates/category-etc.png";
-    else if (category === "일식")
-        return "../../templates/category-japanese.png";
-    else if (category === "한식")
-        return "../../templates/category-korean.png";
-    else if (category === "양식")
-        return "../../templates/category-western.png";
+    switch (category) {
+        case "아시안":
+            return "../../templates/category-asian.png";
+        case "중식":
+            return "../../templates/category-chinese.png";
+        case "기타":
+            return "../../templates/category-etc.png";
+        case "일식":
+            return "../../templates/category-japanese.png";
+        case "한식":
+            return "../../templates/category-korean.png";
+        case "양식":
+            return "../../templates/category-western.png";
+        default:
+            alert("이미지 조회가 불가능합니다.");
+    }
 }
 
 export default RestaurantItem;
