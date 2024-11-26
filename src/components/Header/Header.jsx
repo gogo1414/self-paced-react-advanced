@@ -24,7 +24,7 @@ const GnbButton = styled.button`
     font-size: 24px;
     cursor: pointer;
     
-    &img {
+    & img {
         display: block;
         width: 40px;
         height: 40px;
