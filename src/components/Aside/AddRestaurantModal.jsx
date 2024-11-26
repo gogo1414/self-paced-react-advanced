@@ -99,7 +99,7 @@ function AddRestaurantModal() {
             onClose={() => toggleModal("add", false)}
         >
             <form method="post" onSubmit={handleSubmit}>
-                <FormItem isRequired={true}>
+                <FormItem $isRequired={true}>
                     <label htmlFor="category">카테고리</label>
                     <FormSelect name="category" id="category" required>
                         <option value="">선택해 주세요</option>
@@ -108,11 +108,11 @@ function AddRestaurantModal() {
                         ))}
                     </FormSelect>
                 </FormItem>
-                <FormItem isRequired={true}>
+                <FormItem $isRequired={true}>
                     <label htmlFor="name">이름</label>
                     <FormInput type="text" name="name" id="name" required></FormInput>
                 </FormItem>
-                <FormItem isRequired={true}>
+                <FormItem $isRequired={true}>
                     <label htmlFor="description">설명</label>
                     <FormTextArea name="description" id="description" cols="30" rows="5"></FormTextArea>
                     <FormHelpText>메뉴 등 추가 정보를 입력해 주세요.</FormHelpText>
