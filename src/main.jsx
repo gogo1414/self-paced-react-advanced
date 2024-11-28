@@ -4,9 +4,9 @@ import App from "./App.jsx";
 import {RestaurantProvider} from "./contexts/RestaurantContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <RestaurantProvider>
-        <React.StrictMode>
+    <React.StrictMode>
+        <RestaurantProvider>
             <App />
-        </React.StrictMode>
-    </RestaurantProvider>
+        </RestaurantProvider>
+    </React.StrictMode>
 );
