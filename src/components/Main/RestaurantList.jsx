@@ -10,7 +10,11 @@ const RestaurantListContainer = styled.section`
 `;
 
 function RestaurantList() {
-    const { filteredRestaurants } = useRestaurantContext();
+    const { category, restaurants } = useRestaurantContext();
+
+    const filteredRestaurants = category === "전체" ? restaurants : restaurants.filter(
+        (restaurant) => restaurant.category === category
+    );
 
     return (
         <RestaurantListContainer>

@@ -13,10 +13,6 @@ export const RestaurantProvider = ({ children }) => {
         add: false,
     });
 
-    const filteredRestaurants = category === "전체" ? restaurants : restaurants.filter(
-        (restaurant) => restaurant.category === category
-    );
-
     const toggleModal = (modalType, isOpen, detailData = null, event = null) => {
         setIsModalOpen((prev) => ({...prev, [modalType]: isOpen}));
 
@@ -35,7 +31,7 @@ export const RestaurantProvider = ({ children }) => {
     return (
         <RestaurantContext.Provider
             value={{
-                filteredRestaurants,
+                restaurants,
                 toggleModal,
                 isModalOpen,
                 category,
