@@ -9,9 +9,7 @@ export const useRestaurants = () => {
         try {
             const response = await fetch("http://localhost:3000/restaurants");
             const data = await response.json();
-            console.log("data state:", data);
             setRestaurantList(data);
-            console.log("Restaurants state:", restaurantList);
         } catch (error) {
             alert("레스토랑 데이터를 가져오는데 문제가 발생했습니다.\n" + error);
         }

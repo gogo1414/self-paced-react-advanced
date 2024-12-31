@@ -36,7 +36,7 @@ const Button = styled.button`
 `;
 
 function RestaurantDetailModal() {
-    const { clickedRestaurantItem } = useRecoilValue(clickedRestaurantState);
+    const { name, description} = useRecoilValue(clickedRestaurantState);
     const setIsModalOpen = useSetRecoilState(modalState);
 
     const closeDetailModal = () => {
@@ -48,12 +48,12 @@ function RestaurantDetailModal() {
 
     return (
         <Modal
-            title={clickedRestaurantItem.name}
+            title={name}
             onClose={closeDetailModal}
         >
             <RestaurantInfo>
                 <RestaurantInfoDescription>
-                    {clickedRestaurantItem.description}
+                    {description}
                 </RestaurantInfoDescription>
             </RestaurantInfo>
             <ButtonContainer

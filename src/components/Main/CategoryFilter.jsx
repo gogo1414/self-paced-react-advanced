@@ -33,9 +33,9 @@ function CategoryFilter() {
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
             >
-                {categories.map((category) => (
-                    <option key={category.id} value={category.name}>
-                        {category.name}
+                {categories.map((cat) => (
+                    <option key={cat.id} value={cat.name}>
+                        {cat.name}
                     </option>
                 ))}
             </select>
