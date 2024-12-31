@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useRecoilState } from "recoil";
+import { restaurantListState } from "../recoil/RestaurantListState.jsx";
 
 export const useRestaurants = () => {
-    const [ restaurants, setRestaurants ] = useState([]);
+    const [ restaurantList, setRestaurantList ] = useRecoilState(restaurantListState);
       
     const fetchRestaurants = async () => {
         try {
             const response = await fetch("http://localhost:3000/restaurants");
             const data = await response.json();
-            setRestaurants(data);
+            console.log("data state:", data);
+            setRestaurantList(data);
+            console.log("Restaurants state:", restaurantList);
         } catch (error) {
             alert("레스토랑 데이터를 가져오는데 문제가 발생했습니다.\n" + error);
         }
@@ -36,5 +40,5 @@ export const useRestaurants = () => {
         }
     };
 
-    return { restaurants, addRestaurant };
+    return { restaurantList, addRestaurant };
 };

@@ -1,6 +1,9 @@
 import RestaurantItem from './RestaurantItem.jsx';
 import styled from "styled-components";
-import { useRestaurantContext } from "../../contexts/RestaurantContext.jsx";
+import { useRecoilValue } from "recoil";
+import { categoryState } from "../../recoil/CategoryState.jsx";
+import { useRestaurants } from "../../hooks/useRestaurants.js";
+import {restaurantListState} from "../../recoil/RestaurantListState.jsx";
 
 const RestaurantListContainer = styled.section`
     display: flex;
@@ -10,11 +13,12 @@ const RestaurantListContainer = styled.section`
 `;
 
 function RestaurantList() {
-    const { category, restaurants } = useRestaurantContext();
+    useRestaurants();
+    const { category } = useRecoilValue(categoryState);
+    const restaurants = useRecoilValue(restaurantListState);
 
-    const filteredRestaurants = category === "전체" ? restaurants : restaurants.filter(
-        (restaurant) => restaurant.category === category
-    );
+    const filteredRestaurants = category === "전체"
+        ? restaurants : restaurants.filter((restaurant) => restaurant.category === category);
 
     return (
         <RestaurantListContainer>

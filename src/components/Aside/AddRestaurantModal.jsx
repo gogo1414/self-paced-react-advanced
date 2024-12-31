@@ -1,7 +1,10 @@
 import Categories from "../../data/Category.js";
 import Modal from "./Modal.jsx"
 import styled from "styled-components";
-import { useRestaurantContext } from "../../contexts/RestaurantContext.jsx";
+import { useSetRecoilState} from "recoil";
+import {modalState} from "../../recoil/ModalState.jsx";
+import {useRestaurants} from "../../hooks/useRestaurants.js";
+import {v4 as uuidv4} from "uuid";
 
 const FormItem = styled.div`
     display: flex;
@@ -77,26 +80,41 @@ const Button = styled.button`
     // text-caption
     font-size: 14px;
     line-height: 20px;
-    //font-weight: 400;
 `;
 
 function AddRestaurantModal() {
+    const { addRestaurant } = useRestaurants();
+    const setIsModalOpen = useSetRecoilState(modalState);
+
     const categories = Categories().filter(
         (category) => category.name !== "전체"
     );
 
-    const handleSubmit = (event) => {
-        const formData = new FormData(event.target);
-        const formJson = Object.fromEntries(formData.entries());
-        toggleModal("add", false, null, formJson)
+    const handleClose = () => {
+        setIsModalOpen((prev) => ({
+            ...prev,
+            add: false,
+        }));
     }
 
-    const { toggleModal } = useRestaurantContext();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const formJson = Object.fromEntries(formData.entries());
+
+        addRestaurant({
+            id: uuidv4(),
+            name: formJson.name,
+            description: formJson.description,
+            category: formJson.category
+        });
+        handleClose();
+    }
 
     return (
         <Modal 
-            title="새로운 음식점" 
-            onClose={() => toggleModal("add", false)}
+            title="새로운 음식점"
+            onClose={handleClose}
         >
             <form method="post" onSubmit={handleSubmit}>
                 <FormItem $isRequired={true}>
@@ -104,7 +122,10 @@ function AddRestaurantModal() {
                     <FormSelect name="category" id="category" required>
                         <option value="">선택해 주세요</option>
                         {categories.map((category) => (
-                            <option key={category.id} value={category.name}>{category.name}</option>
+                            <option key={category.id}
+                                    value={category.name}>
+                                {category.name}
+                            </option>
                         ))}
                     </FormSelect>
                 </FormItem>
