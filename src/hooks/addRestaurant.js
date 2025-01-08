@@ -1,6 +1,10 @@
+import { useSetRecoilState } from "recoil";
+import { restaurantListState } from "../recoil/RestaurantListState.jsx";
 
 
 export const addRestaurant = () => {
+    const setRestaurantList = useSetRecoilState(restaurantListState);
+
     const addNewRestaurant = async (newRestaurant) => {
         try {
             const response = await fetch("http://localhost:3000/restaurants", {
@@ -10,7 +14,8 @@ export const addRestaurant = () => {
             });
 
             if (response.status === 201) {
-                alert(`Successfully added`);
+                const addedRestaurant = await response.json();
+                setRestaurantList((prev) => [...prev, addedRestaurant]);
             }
             else {
                 alert("레스토랑 데이터를 저장하는데 문제가 발생했습니다.\n" + response.status);
