@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import {clickedRestaurantState} from "../../recoil/ClickedRestaurantState.jsx";
 import {useDispatch} from "react-redux";
-import {closeDetailModal} from "../../store/modalSlice.js";
+import {closeDetailModal} from "../../store/ModalSlice.js";
 
 const RestaurantInfo = styled.div`
     display: flex;

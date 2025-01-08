@@ -1,8 +1,8 @@
 import RestaurantItem from './RestaurantItem.jsx';
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
-import { categoryState } from "../../recoil/CategoryState.jsx";
-import {restaurantListState} from "../../recoil/RestaurantListState.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchRestaurants } from "../../store/RestaurantListActions.js";
 
 const RestaurantListContainer = styled.section`
     display: flex;
@@ -12,11 +12,16 @@ const RestaurantListContainer = styled.section`
 `;
 
 function RestaurantList() {
-    const restaurantList = useRecoilValue(restaurantListState);
-    const category = useRecoilValue(categoryState);
+    const dispatch = useDispatch();
+    const { restaurants } = useSelector((state) => state.restaurants);
+    const { category } = useSelector((state) => state.category);
+
+    useEffect(() => {
+        dispatch(fetchRestaurants());
+    }, []);
 
     const filteredRestaurants = category === "전체"
-        ? restaurantList : restaurantList.filter((restaurant) => restaurant.category === category);
+        ? restaurants : restaurants.filter((restaurant) => restaurant.category === category);
 
     return (
         <RestaurantListContainer>

@@ -1,10 +1,10 @@
 import Categories from "../../data/Category.js";
 import Modal from "./Modal.jsx"
 import styled from "styled-components";
-import { addRestaurant } from "../../hooks/addRestaurant.js";
-import {v4 as uuidv4} from "uuid";
-import {useDispatch} from "react-redux";
-import {closeAddModal} from "../../store/modalSlice.js";
+import { addRestaurant } from "../../hooks/AddRestaurant.js";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { closeAddModal } from "../../store/ModalSlice.js";
 
 const FormItem = styled.div`
     display: flex;
@@ -84,7 +84,6 @@ const Button = styled.button`
 
 function AddRestaurantModal() {
     const dispatch = useDispatch();
-    const { addNewRestaurant } = addRestaurant();
 
     const categories = Categories().filter(
         (category) => category.name !== "전체"
@@ -99,12 +98,12 @@ function AddRestaurantModal() {
         const formData = new FormData(event.target);
         const formJson = Object.fromEntries(formData.entries());
 
-        addNewRestaurant({
+        dispatch(addRestaurant({
             id: uuidv4(),
             name: formJson.name,
             description: formJson.description,
             category: formJson.category
-        });
+        }));
 
         handleClose();
     }

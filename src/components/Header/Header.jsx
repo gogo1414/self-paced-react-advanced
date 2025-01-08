@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {useDispatch} from "react-redux";
-import {openAddModal} from "../../store/modalSlice.js";
+import {openAddModal} from "../../store/ModalSlice.js";
 
 const Gnb = styled.header`
     display: flex;
