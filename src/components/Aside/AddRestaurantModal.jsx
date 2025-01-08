@@ -1,10 +1,10 @@
 import Categories from "../../data/Category.js";
 import Modal from "./Modal.jsx"
 import styled from "styled-components";
-import { useSetRecoilState} from "recoil";
-import { modalState } from "../../recoil/ModalState.jsx";
 import { addRestaurant } from "../../hooks/addRestaurant.js";
 import {v4 as uuidv4} from "uuid";
+import {useDispatch} from "react-redux";
+import {closeAddModal} from "../../store/modalSlice.js";
 
 const FormItem = styled.div`
     display: flex;
@@ -83,18 +83,15 @@ const Button = styled.button`
 `;
 
 function AddRestaurantModal() {
+    const dispatch = useDispatch();
     const { addNewRestaurant } = addRestaurant();
-    const setIsModalOpen = useSetRecoilState(modalState);
 
     const categories = Categories().filter(
         (category) => category.name !== "전체"
     );
 
     const handleClose = () => {
-        setIsModalOpen((prev) => ({
-            ...prev,
-            add: false,
-        }));
+        dispatch(closeAddModal());
     }
 
     const handleSubmit = (event) => {

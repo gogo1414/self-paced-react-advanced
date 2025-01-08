@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import {useSetRecoilState} from "recoil";
-import {modalState} from "../../recoil/ModalState.jsx";
 import {clickedRestaurantState} from "../../recoil/ClickedRestaurantState.jsx";
+import {useDispatch} from "react-redux";
+import {openDetailModal} from "../../store/modalSlice.js";
 
 const RestaurantWrapper = styled.li`
     display: flex;
@@ -55,23 +56,20 @@ const RestaurantDescription = styled.p`
 `;
 
 function RestaurantItem({ name, description, category, alt }) {
-    const setIsModalOpen = useSetRecoilState(modalState);
+    const dispatch = useDispatch();
     const setClickedRestaurant = useSetRecoilState(clickedRestaurantState);
 
-    const openDetailModal = (name, description) => {
+    const handleOpen = (name, description) => {
         setClickedRestaurant({
             name,
             description
         });
 
-        setIsModalOpen((prev) => ({
-            ...prev,
-            detail: true,
-        }));
+        dispatch(openDetailModal());
     };
 
     return (
-        <RestaurantWrapper onClick={() => openDetailModal(name, description )}>
+        <RestaurantWrapper onClick={() => handleOpen(name, description )}>
           <RestaurantCategory>
             <CategoryIcon
                 src={convertCategoryToImageSrc(category)}
