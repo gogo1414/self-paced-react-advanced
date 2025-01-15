@@ -1,7 +1,6 @@
 import Categories from "../../data/Category.js";
 import Modal from "./Modal.jsx"
 import styled from "styled-components";
-import { addRestaurant } from "../../hooks/AddRestaurant.js";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { closeAddModal } from "../../store/ModalSlice.js";
@@ -98,12 +97,12 @@ function AddRestaurantModal() {
         const formData = new FormData(event.target);
         const formJson = Object.fromEntries(formData.entries());
 
-        dispatch(addRestaurant({
-            id: uuidv4(),
-            name: formJson.name,
-            description: formJson.description,
-            category: formJson.category
-        }));
+        // dispatch(addRestaurant({
+        //     id: uuidv4(),
+        //     name: formJson.name,
+        //     description: formJson.description,
+        //     category: formJson.category
+        // }));
 
         handleClose();
     }
